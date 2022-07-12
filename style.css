@@ -10,13 +10,13 @@ body{
     background-size: cover;
 }
 h4{
-    margin-top: 100px;
+    margin-top: 70px;
     font-size: 70px;
     color: antiquewhite;
     text-align: center;
 }
 table{
-    margin: 100px 400px;
+    margin: 100px 450px;
     border-collapse: collapse;
     font-size: 50px;
     color: antiquewhite;
@@ -25,10 +25,4 @@ th, td{
     padding: 8px;
     text-align: center;
     border: 5px solid #ddd;
-}
-p{
-    margin-top: 100px;
-    font-size: 70px;
-    color: antiquewhite;
-    text-align: center;
 }
