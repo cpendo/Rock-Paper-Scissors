@@ -1,6 +1,6 @@
 const names = ['Rock', 'Paper', 'Scissors'];
 const para = document.querySelector('p');
-const heading = document.querySelector('h1');
+const heading = document.querySelector('h4');
 
 function computerPlay(){
   const randomNumber = Math.floor(Math.random() * names.length);
@@ -12,7 +12,7 @@ function playRound(playerSelection, computerSelection) {
 
   playerSelection = prompt("Rock, Paper, Scissors");
   computerSelection = computerPlay();
-  para.textContent = ` Computer: ${computerSelection} Player: ${playerSelection}`;
+  heading.textContent = ` Computer: ${computerSelection} Player: ${playerSelection}`;
 
   if (playerSelection === 'Rock' && computerSelection === 'Rock'){
     return 'This is a tie!';
@@ -21,22 +21,24 @@ function playRound(playerSelection, computerSelection) {
   } else if (playerSelection === 'Scissors' && computerSelection === 'Scissors'){
     return 'This is a tie!'
   } else if (playerSelection === 'Rock' && computerSelection === 'Paper'){
-      return 'You lose! Paper beats Rock';
+    return 'You lose! Paper beats Rock';
   } else if (playerSelection === 'Paper' && computerSelection === 'Rock'){
-      return 'You Win! Paper beats Rock';
+    return 'You Win! Paper beats Rock';
   } else if (playerSelection === 'Rock' && computerSelection === 'Scissors'){
-      return 'You Win! Rock beats Scissors';
+    return 'You Win! Rock beats Scissors';
   } else if (playerSelection === 'Scissors' && computerSelection === 'Rock'){
       return 'You lose! Rock beats Scissors';
   } else if (playerSelection === 'Paper' && computerSelection === 'Scissors'){
-      return 'You lose! Scissors beats Paper';
+    return 'You lose! Scissors beats Paper';
   } else if (playerSelection === 'Scissors' && computerSelection === 'Paper'){
-      return 'You win! Scissors beats Paper';
+    return 'You win! Scissors beats Paper';
   } 
   else {
-    return 'Boo Bitch!';
+  return 'Boo Bitch!';
+    }
+    
   } 
-}
 
 
-alert(game());
+
+para.textContent = playRound();
