@@ -1,74 +1,61 @@
-const names = ['Rock', 'Paper', 'Scissors'];
-const heading = document.querySelector('h4');
-const computer = document.querySelector('.computer')
-const player = document.querySelector('.player')
-
-
-function computerPlay() {
-  const randomNumber = Math.floor(Math.random() * names.length);
-  const choice = names[randomNumber];
-  return choice;
+function computerPlay(){
+    const names = ['rock', 'paper', 'scissors'];
+    const randomNumber = Math.floor(Math.random() * names.length);
+    const choice = names[randomNumber];
+    return choice;
 }
 
-function playRound(playerSelection, computerSelection) {
+const buttons = document.querySelectorAll('button');
+let playerSelection = buttons.forEach(button =>{
+    button.addEventListener('click', function(){
+        playRound(button.value);
+    })
+})
 
-  playerSelection = prompt("Rock, Paper, Scissors");
-  computerSelection = computerPlay();
-  
-  alert(` Computer: ${computerSelection}   Player: ${playerSelection}`);
-
-  if (playerSelection === 'Rock' && computerSelection === 'Rock') {
-    return 'This is a tie!';
-  } else if (playerSelection === 'Paper' && computerSelection === 'Paper') {
-    return 'This is a tie!';
-  } else if (playerSelection === 'Scissors' && computerSelection === 'Scissors') {
-    return 'This is a tie!'
-  } else if (playerSelection === 'Rock' && computerSelection === 'Paper') {
-    return 'You lose! Paper beats Rock';
-  } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-    return 'You Win! Paper beats Rock';
-  } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
-    return 'You Win! Rock beats Scissors';
-  } else if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
-    return 'You lose! Rock beats Scissors';
-  } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
-    return 'You lose! Scissors beats Paper';
-  } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-    return 'You win! Scissors beats Paper';
-  }
-  else {
-    return 'Boo Bitch!';
-  }
+function disableButtons() {
+    buttons.forEach(button => {
+        button.disabled = true;
+    })
 }
 
 let playerScore = 0;
-
 let computerScore = 0;
+const computer = document.querySelector('.computer');
+const player = document.querySelector('.player');
+const heading = document.querySelector('h4');
+const para = document.querySelector('h5');
 
-function game() {
+function playRound(playerSelection, computerSelection){
+    computerSelection = computerPlay();
+    let result = "";
 
-  for (let i = 0; i < 5; i++) 
-  { result = playRound(); 
-    if (result === 'You lose! Paper beats Rock' ||
-        result === 'You lose! Scissors beats Paper' ||
-        result === 'You lose! Rock beats Scissors') {
-      computerScore ++;
-    } else if ( result === 'You Win! Paper beats Rock' ||
-        result === 'You Win! Rock beats Scissors' ||
-        result === 'You win! Scissors beats Paper') {
-      playerScore ++;
-    } 
-  }
-  player.textContent = playerScore;
-  computer.textContent = computerScore;
+   if (playerSelection === 'rock' && computerSelection === 'rock' ||
+        playerSelection === 'paper' && computerSelection === 'paper' ||
+        playerSelection === 'scissors' && computerSelection === 'scissors'){
+            result = ("this is a tie");
+        } else if (playerSelection === 'rock' && computerSelection === 'scissors' ||
+                    playerSelection === 'paper' && computerSelection === 'rock'|| 
+                    playerSelection === 'scissors' && computerSelection === 'paper'){
+                        playerScore++;
+                        result = (`you win! ${playerSelection} beats ${computerSelection}`);
+        } else if (playerSelection === 'rock' && computerSelection === 'paper' ||
+                    playerSelection === 'paper' && computerSelection === 'scissors' ||
+                    playerSelection === 'scissors' && computerSelection === 'rock'){
+                        computerScore++;
+                        result = (`you lose! ${computerSelection} beats ${playerSelection}`);
+    } else{
+        alert("OOPS! LOOKS LIKE AN ERROR");
+    }
 
-  if (playerScore > computerScore){
-    return 'You Win!';
-  } else if (playerScore === computerScore){
-    return 'Its a Draw!';
-  } else {
-    return 'You Lose!';
-  }
-}
+    player.textContent = playerScore;
+    computer.textContent = computerScore;
+    heading.textContent = result;
 
-heading.textContent = game();
+    if (playerScore === 5 ){
+        para.textContent = "GaMe OvEr! YoU wOn ! ReLoAd PaGe To PlAy AgAiN";
+        disableButtons();
+    } else if (computerScore === 5 ){
+        para.textContent = "GaMe OvEr! CoMpUtEr wOn ! ReLoAd PaGe To PlAy AgAiN";
+        disableButtons();
+    }
+};

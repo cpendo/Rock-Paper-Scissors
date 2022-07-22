@@ -9,14 +9,45 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-h4{
-    margin-top: 70px;
+h1{
     font-size: 70px;
+    color: white;
+    text-align: center;
+}
+.images{
+    display: flex;
+    flex: 1;
+    gap: 30px;
+    margin: 30px auto;
+    width: 40%;
+}
+img{
+    width: 120px;
+    height: 120px;
+}
+button{
+    padding: 15px;
+    background: white;
+    border: none;
+    border-radius: 10px;
+}
+button:hover {
+    background: hotpink;
+}
+h4{
+    margin-top: 20px;
+    font-size: 50px;
+    color: antiquewhite;
+    text-align: center;
+}
+h5{
+    margin-top: 10px;
+    font-size: 50px;
     color: antiquewhite;
     text-align: center;
 }
 table{
-    margin: 100px 450px;
+    margin: 20px 450px;
     border-collapse: collapse;
     font-size: 50px;
     color: antiquewhite;
